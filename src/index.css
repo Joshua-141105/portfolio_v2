@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  /* Color Palette - Cyberpunk/Modern Dark Theme (Default) */
+  --primary: #00d9ff;
+  --primary-glow: rgba(0, 217, 255, 0.3);
+  --secondary: #ff00e5;
+  --secondary-glow: rgba(255, 0, 229, 0.3);
+  --accent: #00ff88;
+  --accent-glow: rgba(0, 255, 136, 0.3);
+
+  /* Background Colors */
+  --bg-dark: #0a0a0f;
+  --bg-darker: #050508;
+  --bg-card: rgba(20, 20, 30, 0.8);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-muted: #606070;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #00d9ff 0%, #ff00e5 50%, #00ff88 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(0, 217, 255, 0.1) 0%, rgba(255, 0, 229, 0.05) 50%, transparent 100%);
+  --gradient-card: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(255, 0, 229, 0.1) 100%);
+
+  /* Shadows */
+  --shadow-primary: 0 0 40px rgba(0, 217, 255, 0.3);
+  --shadow-secondary: 0 0 40px rgba(255, 0, 229, 0.3);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  /* Common variables */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --font-primary: 'Outfit', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  --section-padding: 100px;
+  --container-max: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+[data-theme="light"] {
+  /* Light Theme Colors */
+  --primary: #2563eb;
+  /* Royal Blue */
+  --primary-glow: rgba(37, 99, 235, 0.4);
+  --secondary: #7c3aed;
+  /* Violet */
+  --secondary-glow: rgba(124, 58, 237, 0.3);
+  --accent: #10b981;
+  /* Emerald */
+  --accent-glow: rgba(16, 185, 129, 0.3);
+
+  /* Override Gradients for Light Mode */
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+
+  /* Light Background Colors */
+  --bg-dark: #f8f9fa;
+  /* Actually light grey/white */
+  --bg-darker: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-glass: rgba(0, 0, 0, 0.03);
+
+  /* Light Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #7a7a7a;
+
+  /* Shadows adjusted for light mode */
+  --shadow-primary: 0 5px 20px rgba(0, 119, 204, 0.3);
+  --shadow-secondary: 0 5px 20px rgba(209, 0, 187, 0.3);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.1);
+  /* Lighter shadow */
+
+  /* Border Color */
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Selection */
+::selection {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Base */
+section {
+  padding: var(--section-padding) 0;
+  position: relative;
+}
+
+/* Section Title */
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Effect */
+.glow {
+  text-shadow:
+    0 0 10px var(--primary-glow),
+    0 0 20px var(--primary-glow),
+    0 0 40px var(--primary-glow);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--bg-dark);
+  box-shadow: var(--shadow-primary);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    var(--shadow-primary),
+    0 10px 40px rgba(0, 217, 255, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+  box-shadow: var(--shadow-primary);
+  transform: translateY(-3px);
+}
+
+/* Glass Card */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 217, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow:
+    var(--shadow-card),
+    0 0 30px rgba(0, 217, 255, 0.1);
+}
+
+/* Background Effects */
+.bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-glow-1 {
+  top: -200px;
+  right: -200px;
+  background: var(--primary);
+}
+
+.bg-glow-2 {
+  bottom: -200px;
+  left: -200px;
+  background: var(--secondary);
+}
+
+/* Link Hover Effect */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Responsive Typography */
+h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 40px;
+  }
+}

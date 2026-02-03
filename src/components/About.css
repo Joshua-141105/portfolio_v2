@@ -1,0 +1,263 @@
+.about {
+    background: var(--bg-darker);
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+/* About Image Section */
+.about-image-section {
+    display: flex;
+    justify-content: center;
+}
+
+.about-image-wrapper {
+    position: relative;
+    width: 350px;
+    height: 400px;
+}
+
+.about-image-bg {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    opacity: 0.3;
+}
+
+.about-image-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.about-avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 0, 229, 0.05));
+}
+
+.code-block {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 30px;
+}
+
+.code-line {
+    display: block;
+}
+
+.code-line.indent {
+    padding-left: 20px;
+}
+
+.code-keyword {
+    color: var(--secondary);
+}
+
+.code-var {
+    color: var(--primary);
+}
+
+.code-prop {
+    color: var(--accent);
+}
+
+.code-string {
+    color: #ffd700;
+}
+
+.about-decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.decoration-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.decoration-dot.dot-1 {
+    top: -6px;
+    right: 40px;
+    background: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.decoration-dot.dot-2 {
+    bottom: 30px;
+    left: -6px;
+    background: var(--secondary);
+    box-shadow: 0 0 20px var(--secondary);
+}
+
+.decoration-line {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+}
+
+/* About Text Section */
+.about-text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.about-intro h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.about-intro p,
+.about-details p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-normal);
+}
+
+.highlight-item:hover {
+    border-color: rgba(0, 217, 255, 0.3);
+    transform: translateX(5px);
+}
+
+.highlight-icon {
+    font-size: 1.2rem;
+}
+
+/* Stats Section */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.stat-card {
+    padding: 30px;
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .about-image-wrapper {
+        width: 300px;
+        height: 350px;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image-wrapper {
+        width: 280px;
+        height: 320px;
+    }
+
+    .code-block {
+        font-size: 0.85rem;
+        padding: 20px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image-wrapper {
+        width: 250px;
+        height: 280px;
+    }
+}
